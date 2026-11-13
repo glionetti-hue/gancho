@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/gancho/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Tornei di padel tra amici, con tabelloni e classifiche.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="GANCHO">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>GANCHO</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body style="margin: 0; background: #0D1110;">
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <!-- Finche' Flutter non disegna, la pagina sarebbe bianca e muta: il 1/11 un motore
+       grafico non scaricato sembrava un'app rotta, senza un solo messaggio a schermo. -->
+  <div id="avvio" style="font-family: sans-serif; text-align: center; padding-top: 30vh; color: #F2F5F1; background: #0D1110; min-height: 100vh;">
+    <h2>GANCHO</h2>
+    <p id="avvio-testo">Caricamento in corso…</p>
+  </div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      document.getElementById('avvio').remove();
+    });
+    setTimeout(function () {
+      var testo = document.getElementById('avvio-testo');
+      if (testo) testo.textContent = 'Il caricamento non riesce: controlla la connessione e ricarica la pagina.';
+    }, 45000);
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
